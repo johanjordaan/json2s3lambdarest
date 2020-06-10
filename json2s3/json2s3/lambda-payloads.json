@@ -5,9 +5,7 @@
             "queryStringParameters": {
                 "appName": "MathJump"
             },
-            "body": {
-                "a": "b"
-            }
+            "body": "{\"x\":\"z\"}"
         },
         "apigateway": {
             "path": "/",
@@ -23,10 +21,8 @@
                     "PATCH"
                 ]
             },
-            "queryString": "hallo=world",
-            "body": {
-                "application": "MathJump"
-            }
+            "queryString": "appName=MathJump",
+            "body": "{\"a\":\"b\"}"
         }
     }
 }

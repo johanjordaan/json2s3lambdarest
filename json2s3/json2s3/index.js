@@ -2,19 +2,23 @@ const utils = require('./utils');
 const AWS = require('aws-sdk');
 const S3 = new AWS.S3();
 
+
 exports.handler =  async function(event, context) {
     
   if(event.httpMethod !== "POST") {
-    return {
-      isBase64Encoded:false,
-      statusCode: 404,
-      headers:{},
-      body:JSON.stringify(`${event.httpMethod} not supported`,null,2),
-    };
+    return utils.fail(404,`${event.httpMethod} not supported`);
+  }
+  
+  if(event.queryStringParameters === null || event.queryStringParameters.appName === null) {
+    return utils.fail(404,`appName queryStringParameters not provided`);
   }
   
   const appName = event.queryStringParameters.appName;
-  const postedData = JSON.stringify(event.body);
+  
+  const body = event.body.toString('ascii');
+  if(!utils.isJson(body)) {
+    return utils.fail(400,`only valid json is accepted`);
+  }
   
   try {
     const data = await S3.getObject({
@@ -31,31 +35,16 @@ exports.handler =  async function(event, context) {
     const id = context.awsRequestId;
     const fileName = `${new Date().toISOString()}_${id}.json`;
     const key = `${app.folder}/${fileName}`;
-    
-    const response = await S3.putObject({
+
+    await S3.putObject({
       Bucket: app.bucket,
       Key: key,
-      Body: postedData
+      Body: body
     }).promise();
-    
-    
-    console.log(response);
-    
-    const body = `Posted ${postedData} to ${app.bucket}/${key}`;
-    
-    return {
-      isBase64Encoded:false,
-      statusCode: 200,
-      headers:{},
-      body:JSON.stringify(body,null,2),
-    };
-    
+
+    const retVal = `Posted ${body} to ${app.bucket}/${key}`;
+    return utils.succeed(retVal);
   } catch(err) {
-    return {
-      isBase64Encoded:false,
-      statusCode: 500,
-      headers:{},
-      body:JSON.stringify(err,null,2),
-    };
+    return utils.fail(500,err);
   } 
 };
