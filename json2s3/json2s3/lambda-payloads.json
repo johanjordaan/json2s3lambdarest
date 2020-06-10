@@ -1,0 +1,32 @@
+{
+    "json2s3": {
+        "lambda": {
+            "httpMethod": "POST",
+            "queryStringParameters": {
+                "appName": "MathJump"
+            },
+            "body": {
+                "a": "b"
+            }
+        },
+        "apigateway": {
+            "path": "/",
+            "method": {
+                "value": "POST",
+                "items": [
+                    "GET",
+                    "POST",
+                    "PUT",
+                    "DELETE",
+                    "HEAD",
+                    "OPTIONS",
+                    "PATCH"
+                ]
+            },
+            "queryString": "hallo=world",
+            "body": {
+                "application": "MathJump"
+            }
+        }
+    }
+}

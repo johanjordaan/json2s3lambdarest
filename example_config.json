@@ -1,0 +1,9 @@
+{
+    "applications":[
+        {
+            "name":"MathJump",
+            "bucket":"1337coders",
+            "folder":"analytics/MathJump"
+        }
+    ]
+}
