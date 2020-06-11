@@ -3,7 +3,8 @@
         "lambda": {
             "httpMethod": "POST",
             "queryStringParameters": {
-                "appName": "MathJump"
+                "appName": "MathJump",
+                "sectionName": "answers"
             },
             "body": "{\"x\":\"z\"}"
         },
@@ -21,7 +22,7 @@
                     "PATCH"
                 ]
             },
-            "queryString": "appName=MathJump",
+            "queryString": "appName=MathJump&sectionName=answers",
             "body": "{\"a\":\"b\"}"
         }
     }
