@@ -1,14 +1,17 @@
-         ___        ______     ____ _                 _  ___  
-        / \ \      / / ___|   / ___| | ___  _   _  __| |/ _ \ 
-       / _ \ \ /\ / /\___ \  | |   | |/ _ \| | | |/ _` | (_) |
-      / ___ \ V  V /  ___) | | |___| | (_) | |_| | (_| |\__, |
-     /_/   \_\_/\_/  |____/   \____|_|\___/ \__,_|\__,_|  /_/ 
+                                                           
+    ____  ______  _____  ____   _  ______  ______  ______  
+   |    ||   ___|/     \|    \ | ||____  ||   ___||___   | 
+  _|    | `-.`-. |     ||     \| ||    --| `-.`-. |___   | 
+ |______||______|\_____/|__/\____||______||______||______| 
+                                                           
+                                                           
  ----------------------------------------------------------------- 
 
+A very simple AWS lambda to upload json to S3 partitioned by year,
+month and day. The valid uploads are manged via a config file.
 
-Hi there! Welcome to AWS Cloud9!
-
-To get started, create some files, play with the terminal,
-or visit https://docs.aws.amazon.com/console/cloud9/ for our documentation.
-
-Happy coding!
+Future enhancements:
+* Security
+* Encryption
+* Scheme validation
+* UI to manager the config
