@@ -21,9 +21,9 @@ exports.handler =  async function(event, context) {
   }
 
   const body = event.body.toString('ascii');
-  if(!utils.isJson(body)) {
-    return utils.fail(400,{message: `only valid json is accepted`});
-  }
+  //if(!utils.isJson(body)) {
+  //  return utils.fail(400,{message: `only valid json is accepted`});
+  //}
 
   var appLookup = {};
   try {
