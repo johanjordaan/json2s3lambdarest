@@ -22,7 +22,7 @@
                     "PATCH"
                 ]
             },
-            "queryString": "appName=MathJump&sectionName=answers",
+            "queryString": "appName=MathJump",
             "body": "{\"a\":\"b\"}"
         }
     }

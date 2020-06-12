@@ -56,7 +56,7 @@ exports.handler =  async function(event, context) {
   const year = now.getUTCFullYear();
   const month = now.getUTCMonth();
   const day = now.getUTCDate();
-  const key = `${app.folder}/${sectionName}/${year}/${month}/${day}/${fileName}`;
+  const key = `${app.folder}/${sectionName}/year=${year}/month=${month}/day=${day}/${fileName}`;
 
   try {
     await S3.putObject({

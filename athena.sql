@@ -1,6 +1,9 @@
 CREATE EXTERNAL TABLE IF NOT EXISTS MathJump.attempts (
   `appinstanceid` string,
+  `attemptid` string,
   `questionid` string,
+  `questiontimestamp` timestamp,
+  `questiontimestamputc` timestamp,
   `questionyear` int,
   `questionmonth` int,
   `questionday` int,
@@ -16,6 +19,8 @@ CREATE EXTERNAL TABLE IF NOT EXISTS MathJump.attempts (
   `config` string,
   `text` string,
   `correctanswer` int,
+  `attempttimestamp` timestamp,
+  `attempttimestamputc` timestamp,
   `attemptyear` int,
   `attemptmonth` int,
   `attemptday` int,
@@ -32,12 +37,10 @@ PARTITIONED BY (
 )
 ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
 WITH SERDEPROPERTIES (
-  'paths'='appinstanceid,questionid,questionyear'
+  "paths"="year,month,day"
 ) LOCATION 's3://1337coders/analytics/MathJump/attempts/'
 TBLPROPERTIES (
-  'has_encrypted_data'='false',
-  'classification'='json',
-  'typeOfData'='file'
+  'has_encrypted_data'='false'
 );
 
 MSCK REPAIR TABLE MathJump.attempts;
