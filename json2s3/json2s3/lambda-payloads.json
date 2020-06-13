@@ -22,8 +22,10 @@
                     "PATCH"
                 ]
             },
-            "queryString": "appName=MathJump",
-            "body": "{\"a\":\"b\"}"
+            "queryString": "appName=MathJump&sectionName=attempts",
+            "body": {
+                "a": "b"
+            }
         }
     }
 }

@@ -2,10 +2,10 @@
     "applications":[
         {
             "name":"MathJump",
-            "bucket":"1337coders",
-            "folder":"analytics/MathJump",
+            "bucket":"1337coders-data",
+            "folder":"MathJump",
             "sections":[
-                "answers"
+                "attempts"
             ]
         }
     ]

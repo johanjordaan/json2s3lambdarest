@@ -28,8 +28,8 @@ exports.handler =  async function(event, context) {
   var appLookup = {};
   try {
     const data = await S3.getObject({
-      Bucket: "1337coders",
-      Key:"config/json2s3/config.json"
+      Bucket: "1337coders-config",
+      Key:"json2s3/config.json"
     }).promise();
     const config = JSON.parse(data.Body.toString('ascii'));
     appLookup = config.applications.reduceRight((a,i)=>{
