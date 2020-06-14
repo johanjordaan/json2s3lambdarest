@@ -5,6 +5,10 @@ const S3 = new AWS.S3();
 
 exports.handler =  async function(event, context) {
     
+  if(event.httpMethod === "OPTIONS") {
+    return utils.cors('*','OPTIONS,POST');
+  }  
+    
   if(event.httpMethod !== "POST") {
     return utils.fail(404,{message: `${event.httpMethod} not supported`});
   }
@@ -65,7 +69,7 @@ exports.handler =  async function(event, context) {
       Body: body
     }).promise();
 
-    return utils.succeed({message: `created [${app.bucket}/${key}]`});
+    return utils.succeed({message: `created [${app.bucket}/${key}]`},'*','OPTIONS,POST');
   } catch(err) {
     return utils.fail(500,{message: `error saving file [${JSON.stringify(err)}]`});
   } 
